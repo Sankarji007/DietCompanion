@@ -1,0 +1,166 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+        <!-- Toggle button -->
+        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+            data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Navbar brand -->
+
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                <img src="assets\images\chef-logo-design-template-vector-30211700-removebg-preview.png"
+                    style="width: 8%;"  {{action 'CallHomePage'}}/>
+
+
+            </ul>
+            <!-- Left links -->
+        </div>
+        <!-- Collapsible wrapper -->
+        {{#if callmethod}}
+        <div style="width: 30%;margin-right:30%">
+            <div class="input-group rounded">
+
+                <input type="search" class="form-control rounded" id="searchtext" placeholder="Search"
+                    value={{searchTerm}} aria-label="Search" aria-describedby="search-addon" data-mdb-toggle="dropdown"
+                    oninput={{action "print" }} />
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {{#each suggesionlist.meals as |item| }}
+                    <li class="dropdown-item" {{action 'setterm' item.strMeal}}>{{item.strMeal}}</li>
+                    {{/each}}
+
+
+                </ul>
+
+
+                <span class="input-group-text border-0" id="search-addon">
+
+                    <i class="fa fa-search" {{action "callthesearch" }} style="cursor: pointer;"></i>
+                </span>
+
+
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                    data-mdb-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filter
+                </button>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                    <form class="row row-cols-lg-auto g-3 align-items-center" style="padding:2%">
+                        <div class="form-outline mb-2">
+                            <input type="text" id="Calories" class="form-control" />
+                            <label class="form-label" for="Calories">Calories</label>
+                        </div>
+                        <div class="form-outline mb-2">
+                            <input type="text" id="Cooking" class="form-control" />
+                            <label class="form-label" for="Cooking">Cooking Time in minutes</label>
+                        </div>
+                        <div class="col-3">
+                            <p class="h6">diet :</p>
+                        </div>
+
+                        <div class="col-9">
+
+                            <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+                            <select class="select" id="diet">
+                                <option value="balanced">balanced</option>
+                                <option value="high-fiber">high fiber</option>
+                                <option value="high-protein">high protien</option>
+                                <option value="low-carb">low carb</option>
+                                <option value="low-fat">low fat</option>
+                                <option value="low-sodium">low sodium</option>
+                            </select>
+                        </div>
+                        
+                        <div class="col-3">
+                            <p class="h6">dish type :</p>
+                        </div>
+
+                        <div class="col-9">
+
+                            <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
+                            <select class="select" id="dishtype">
+                                <option value="Biscuits and cookies">Biscuits and cookies</option>
+                                <option value="Bread">Bread</option>
+                                <option value="Cereals"> Cereals  </option>
+                                <option value="Condiments and sauces"> Condiments and sauces  </option>
+                                <option value="Desserts">Desserts  </option>
+                                <option value="Drinks"> Drinks  </option>
+                                <option value="Main course">  Main course    </option>
+                                <option value="Pancake">  Pancake    </option>
+                                <option value="Preserve">   Preserve      </option>
+                                <option value="Salad">  Salad    </option>
+                                <option value="Sandwiches">  Sandwiches    </option>
+                                <option value="Side dish">   Side dish      </option>
+                                <option value="Soup">   Soup      </option>
+                                <option value="Starter">   Starter      </option>
+                                <option value="Sweets">    Sweets        </option>
+                            </select>
+                        </div>
+                        <div class="form-outline mb-2">
+                            <input type="text" id="calcium" class="form-control" />
+                            <label class="form-label" for="calcium">calcium in mg</label>
+                        </div>
+                        <div class="form-outline mb-2">
+                            <input type="text" id="Carbohydrate" class="form-control" />
+                            <label class="form-label" for="Carbohydrate">Carbohydrate in g</label>
+                        </div>
+                        <div class="form-outline mb-2">
+                            <input type="text" id="Cholesterol" class="form-control" />
+                            <label class="form-label" for="Cholesterol">Cholesterol in mg</label>
+                        </div>
+                        <div class="form-outline mb-2">
+                            <input type="text" id="Energy" class="form-control" />
+                            <label class="form-label" for="Energy">Energy in kcal</label>
+                        </div>
+                        <div class="form-outline mb-2">
+                            <input type="text" id="Iron" class="form-control" />
+                            <label class="form-label" for="Iron">Iron in mg</label>
+                        </div>
+                        <div class="form-outline mb-2">
+                            <input type="text" id="Fiber" class="form-control" />
+                            <label class="form-label" for="Fiber">Fiber in g</label>
+                        </div>
+                        <div class="form-outline mb-2">
+                            <input type="text" id="Folic" class="form-control" />
+                            <label class="form-label" for="Folic">Folic acid in µg</label>
+                        </div>
+                        <div class="form-outline mb-2">
+                            <input type="text" id="Potassium" class="form-control" />
+                            <label class="form-label" for="Potassium">Potassium in mg</label>
+                        </div>
+                        <div class="form-outline mb-2">
+                            <input type="text" id="Magnesium" class="form-control" />
+                            <label class="form-label" for="Magnesium">Magnesium in mg</label>
+                        </div>
+                        <div class="form-outline mb-2">
+                            <input type="text" id="Protein" class="form-control" />
+                            <label class="form-label" for="Protein">Protein in g</label>
+                        </div>
+                        <button {{action 'filter'}}>Apply filter</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+
+        {{/if}}
+
+        {{drop-down email=email callsave=callsave}}
+
+        <!-- Right elements -->
+
+        <!-- Right elements -->
+    </div>
+    <!-- Container wrapper -->
+</nav>
+<!-- Navbar -->
+
+{{yield}}

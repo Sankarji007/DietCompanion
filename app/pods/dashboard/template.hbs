@@ -1,0 +1,51 @@
+
+
+<main>
+{{nav-bar callit=(action 'callfromsearch') callsave=(action 'redirctToSavedRecipe') email=emailaddress applyfilter=(action 'applyfilter')}}
+
+
+
+<style>
+   @media (max-width: 600px)
+   {
+        #main2{
+            
+            display: grid;
+            grid-template-columns: 100px;
+            background-color: black;
+            justify-content: center;
+            align-items: center;
+            grid-area: auto;
+        }
+   }
+
+</style>
+<div id="main" style="padding: 5%;">
+    <div class="row row-cols-6" id="main2">
+        {{#each resultset.hits as |result|}}
+        {{my-cards result=result viewcards=(action 'viewcards')}}
+        {{/each}}
+    </div>
+</div>
+
+
+{{#if load}}
+    <div class="spinner-border"style="position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 100px;
+    height: 100px;"></div>
+{{/if}} 
+</main>
+
+    
+
+
+    
+
+   
+
+
+{{outlet}}

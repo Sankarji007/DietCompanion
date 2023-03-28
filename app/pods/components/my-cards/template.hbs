@@ -1,0 +1,47 @@
+<style>
+    @media (max-width: 600px) {
+        #carditems {
+
+            width: 100px;
+        }
+    }
+</style>
+<div class="col" style="padding: 3%;" id="carditems">
+
+    <div class="card" style="cursor: pointer;" >
+        <div {{action 'redirectToDetails' result.recipe.uri}}>
+            <div class="hover-zoom">
+                <img class="card-img-top" src={{result.recipe.image}}>
+            </div>
+
+
+            <!-- Card content -->
+            <div class="card-body">
+
+                <!-- Title -->
+
+                <!-- Text -->
+                <span>
+                    <h6 class="card-title"><a>{{result.recipe.label}}</a></h6>
+                    {{!-- <i class="fa fa-bookmark" aria-hidden="true"></i> --}}
+                </span>
+
+                <!-- Button -->
+                <h6 class="badge badge-success">calories:{{this.calories}}</h6>
+                <span class="badge badge-danger">{{result.recipe.dietLabels}}</span>
+                <span class="badge badge-danger">{{result.recipe.cuisineType}}</span>
+
+            </div>
+        </div>
+        <!-- Card image -->
+        {{#if isdelete}}
+            <button class="btn btn-primary" {{action "submit" result.recipe.uri}}>Delete</button>
+        {{/if}}
+    </div>
+</div>
+<!-- Card -->
+
+
+
+
+{{yield}}

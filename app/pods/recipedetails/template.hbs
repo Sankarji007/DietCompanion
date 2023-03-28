@@ -1,0 +1,131 @@
+{{nav-bar email=emailaddress callsave=(action 'savedcolletion') homepage=(action 'HomePage')}}
+{{#if load}}
+<div class="spinner-border" style="position:fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 100px;
+    height: 100px;"></div>
+
+{{else}}
+{{#twitter-share-button title="Look at this!"  hashtags=resultset.recipe.label }}Tweet{{/twitter-share-button}}
+{{#email-share-button recipient="sankarravi045@gamil.com" title="Test subject" text=html}}Send to email{{/email-share-button}}
+<div style="position: absolute;margin-left:85%;margin-top:1%;">
+    <a href="" class="btn btn-primary float-end mr-25" {{action "saveRecipe" }}>Save Recipe</a>
+</div>
+
+<div style="position: absolute;margin-left:65%;margin-top:1%;">
+    <a href="" class="btn btn-primary" {{action 'backbutton' }}>Back to dashboard</a>
+</div>
+<div style="padding: 5%;" class="hello">
+    <div class="row">
+        <div class="col hover-shadow" style="width: 3%;cursor:pointer">
+            <img src={{resultset.recipe.image}} class="img-fluid rounded" style="padding: 2%;width:100%" />
+
+            <blockquote class="blockquote">
+                <h4>{{resultset.recipe.label}}</h4>
+                <strong>{{resultset.recipe.mealType}}</strong>
+            </blockquote>
+            {{#each resultset.recipe.healthLabels as |item|}}
+            <span class="badge badge-success">{{item}}</span>
+            {{/each}}
+
+
+
+        </div>
+        <div class="col hover-shadow">
+            <p class="h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Ingredient list</p>
+            <ul class="list-group list-group-light">
+                {{#each resultset.recipe.ingredientLines as |list|}}
+                <li class="list-group-item">{{list}}</li>
+                {{/each}}
+            </ul>
+
+        </div>
+        <div class="col hover-shadow">
+
+            <div id="carouselExampleInterval" class="carousel slide" data-mdb-ride="carousel" data-mdb-interval="false">
+                <div class="carousel-inner">
+
+                    {{#each resultset.recipe.ingredients as |item|}}
+
+                    {{#if (eq resultset.recipe.ingredients.[0] item)}}
+                    <div class="carousel-item active">
+                        <img src={{item.image}} class="d-block w-100" alt="Wild Landscape" />
+                        <div style="text-align:center;padding:5%">
+                            <h4>{{item.food}}</h4>
+                        </div>
+                    </div>
+                    {{else}}
+                    <div class="carousel-item" data-mdb-interval="2000">
+                        <img src={{item.image}} class="d-block w-100" alt="Wild Landscape" />
+                        <div style="text-align:center;padding:5%">
+                            <h4>{{item.food}}</h4>
+                        </div>
+
+
+
+                    </div>
+                    {{/if}}
+
+                    {{/each}}
+
+                </div>
+
+
+                <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleInterval"
+                    data-mdb-slide="prev">
+                    <span style="color: black;"></span>
+
+                </button>
+                <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleInterval"
+                    data-mdb-slide="next">
+                    <span style="color: black;"></span>
+
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <div>
+
+    </div>
+</div>
+
+<center>
+    <p class="h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Nutrition Information</p>
+    <div style="width:50%" class="center">
+        <table class="table table-hover" border="1">
+            <thead>
+                <tr>
+                    <th>
+                        <p class="h4">Nutrition</p>
+                    </th>
+                    <th>
+                        <p class="h4">Amount</p>
+                    </th>
+                    <th>
+                        <p class="h4">Unit</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each nutrician as |item|}}
+
+                <tr>
+                    <td>{{item.label}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.unit}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+
+        </table>
+    </div>
+</center>
+
+
+{{/if}}
+
+{{outlet}}
