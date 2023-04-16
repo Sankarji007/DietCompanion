@@ -3,12 +3,13 @@ import Ember from 'ember';
 import ENV from 'college-project/config/environment';
 export default Controller.extend({
     resultset:null,
-    
+    selectedValues:[],
     init() {
         this._super(...arguments);
         this.emailaddress;
         this.carddetails;
         this.shownothing;
+        this.checkbox=false
     },
     actions: {
         getSavedRecipe(email)
@@ -52,6 +53,21 @@ export default Controller.extend({
         HomePage()
         {
             this.transitionToRoute('dashboard');
-        }
+        },
+        showcheckbox()
+        {
+            this.set('checkbox',true);
+        },
+          getPlaylistIds()
+          {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const selectedValues = [];
+            checkboxes.forEach((checkbox) => {
+             if (checkbox.checked) {
+                selectedValues.push(checkbox);
+            }});
+            console.log(this.selectedValues);
+          }
+        
     }
 });

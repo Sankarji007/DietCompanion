@@ -17,5 +17,12 @@ export default Route.extend({
        
         controller.set('emailaddress', this.email);
         controller.send('getSavedRecipe',this.email);
-      }
+      },
+    resetController(controller,model)
+    {
+        controller.set('checkbox',null);
+        controller.set('resultset',null);
+
+    }
+
 });

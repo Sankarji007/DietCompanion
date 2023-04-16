@@ -7,7 +7,7 @@ export default Component.extend({
         this.callmethod=this.callit||null;
         this.email=this.email||"";
         this.callsave=this.callsave||"";
-        this.searchTerm="chicken"
+        this.searchTerm="noodles"
         this.suggesionlist;
         this.homepage=this.homepage||null;
     },
@@ -92,9 +92,6 @@ export default Component.extend({
                 obj["nutrients[MG]"]=Magnesium;
             if(isNaN(Protein))
                 obj["nutrients[PROCNT]"]=Protein;
-
-            
-            
             this.applyfilter(obj);
         },
         CallHomePage()

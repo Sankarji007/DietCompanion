@@ -21,7 +21,9 @@
 
 </style>
 <div id="main" style="padding: 5%;">
+    <p class=" h1 fw-bold "> Search Results for  {{queried}}</p>
     <div class="row row-cols-6" id="main2">
+        
         {{#each resultset.hits as |result|}}
         {{my-cards result=result viewcards=(action 'viewcards')}}
         {{/each}}

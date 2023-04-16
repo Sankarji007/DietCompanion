@@ -9,6 +9,9 @@
 <div class="col" style="padding: 3%;" id="carditems">
 
     <div class="card" style="cursor: pointer;" >
+        {{#if showcheck}}
+        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
+        {{/if}}
         <div {{action 'redirectToDetails' result.recipe.uri}}>
             <div class="hover-zoom">
                 <img class="card-img-top" src={{result.recipe.image}}>

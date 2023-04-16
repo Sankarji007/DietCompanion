@@ -9,15 +9,15 @@
     height: 100px;"></div>
 
 {{else}}
-{{#twitter-share-button title="Look at this!"  hashtags=resultset.recipe.label }}Tweet{{/twitter-share-button}}
-{{#email-share-button recipient="sankarravi045@gamil.com" title="Test subject" text=html}}Send to email{{/email-share-button}}
+{{#twitter-share-button title="Look at this! i have found a useful information on this page "  hashtags=resultset.recipe.label }}Tweet{{/twitter-share-button}}
+{{#email-share-button recipient="sankarravi045@gamil.com" title="Prepare meal by these Ingredients" text=html}}Send to email To prepare meal{{/email-share-button}}
+{{#fb-share-button title="Look at this!"  hashtags=resultset.recipe.label }}Share{{/fb-share-button}}
+
 <div style="position: absolute;margin-left:85%;margin-top:1%;">
     <a href="" class="btn btn-primary float-end mr-25" {{action "saveRecipe" }}>Save Recipe</a>
 </div>
 
-<div style="position: absolute;margin-left:65%;margin-top:1%;">
-    <a href="" class="btn btn-primary" {{action 'backbutton' }}>Back to dashboard</a>
-</div>
+
 <div style="padding: 5%;" class="hello">
     <div class="row">
         <div class="col hover-shadow" style="width: 3%;cursor:pointer">

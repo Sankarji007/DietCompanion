@@ -11,6 +11,7 @@ export default Controller.extend({
     init() {
         this._super(...arguments);
         this.recipes;
+        this.queried="noodles";
         // let obj={};
         // obj.type='public';
         // obj.app_id=ENV.APP_ID;
@@ -23,7 +24,7 @@ export default Controller.extend({
                 dataType:'json',
                 data:{
                     type:'public',
-                    q:'chicken',
+                    q:'noodles',
                     app_id:ENV.APP_ID,
                     app_key:ENV.APP_KEY
                     
@@ -52,6 +53,7 @@ export default Controller.extend({
         callfromsearch(recipes)
         {
             this.set('load',true);
+            this.set('queried',recipes);
             Ember.$.ajax({
                 url:'https://api.edamam.com/api/recipes/v2',
                 type:'GET',

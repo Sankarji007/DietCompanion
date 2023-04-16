@@ -27,12 +27,13 @@ export default Controller.extend({
                 if (response.success === "login successfully") {
                     
                     // Cookies.set('login',this.email);
-                    this.transitionToRoute('dashboard');
+                    
                     let cookieService = this.get('cookies');
                     cookieService.write('login', this.email);
 
                     let cookies = cookieService.read();
                     console.log(cookies);
+                    this.transitionToRoute('dashboard');
                     // this.set('session.login', this.email);
                 }
                 else {

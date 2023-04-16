@@ -39,11 +39,11 @@ export default Controller.extend({
     actions: {
         store(value) {
             this.set('resultset', value);
-            this.html = value.recipe.label+" "+"ready for this";
+            this.html = "'"+value.recipe.label+"' "+" Hi, I have request you prepare this meal by  using this Ingredients this will maintain my diet ->   ";
             let k=0;
             let ingredient=value.recipe.ingredientLines.map(item=>{
                 k++;
-                return (`\n(${k} step   )`)+item;
+                return (`\n(${k})`)+item;
             });
             this.html +="\n"+ingredient;
             this.set('load', false);
