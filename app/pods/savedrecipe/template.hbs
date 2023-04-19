@@ -9,22 +9,26 @@
         <h1>No Results Found</h1>
     </div>
     {{else}}
-    {{!-- {{#if checkbox}}
+    {{#if checkbox}}
     <button class="btn btn-primary " {{action 'getPlaylistIds'}}>Finish</button>
     {{else}}
     <button class="btn btn-primary position-relative top-0 start-100 translate-middle" {{action 'showcheckbox'}}>Publish
         PlayList</button>
-    {{/if}} --}}
+    {{/if}}
     <p class=" h1 fw-bold ">Saved Recipes</p>
 
     <div class="row row-cols-6 g-9">
          
         {{#each resultset.ResultSet as |result|}}
-        {{#if showcheck}}
-        <input type="checkbox" name="Checkbox" value="hello" />
-        {{/if}}
-        {{my-cards result=result viewcards=(action 'viewcards') isdelete=true email=emailaddress reload=(action
+        
+        {{#my-cards result=result viewcards=(action 'viewcards') isdelete=true email=emailaddress reload=(action
         'getSavedRecipe') showcheck=checkbox}}
+
+            {{#if checkbox}}
+            <input type="checkbox" name="Checkbox" value={{result.recipe.uri}} style="width:2vw;height:2vh"/>
+        {{/if}}
+
+        {{/my-cards}}
         {{/each}}
     </div>
     

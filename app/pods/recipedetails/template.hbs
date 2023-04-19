@@ -9,9 +9,57 @@
     height: 100px;"></div>
 
 {{else}}
-{{#twitter-share-button title="Look at this! i have found a useful information on this page "  hashtags=resultset.recipe.label }}Tweet{{/twitter-share-button}}
-{{#email-share-button recipient="sankarravi045@gamil.com" title="Prepare meal by these Ingredients" text=html}}Send to email To prepare meal{{/email-share-button}}
-{{#fb-share-button title="Look at this!"  hashtags=resultset.recipe.label }}Share{{/fb-share-button}}
+{{#twitter-share-button title="Look at this! i have found a useful information on this page "
+hashtags=resultset.recipe.label }}Tweet{{/twitter-share-button}}
+{{#email-share-button recipient="sankarravi045@gamil.com" title="Prepare meal by these Ingredients" text=html}}Send to
+email To prepare meal{{/email-share-button}}
+{{#fb-share-button title="Look at this!" hashtags=resultset.recipe.label }}Share{{/fb-share-button}}
+<button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+    Order in restaurent
+</button>
+
+{{!-- // --}}
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Select Restaurent</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form >
+            <div class="modal-body">
+                <select class="browser-default custom-select" required>
+                    <option selected>Select Restaurent Name </option>
+                    <option value="1">Abc Restaurent</option>
+                    <option value="2">Xyz Restaurent</option>
+                    <option value="3">New Restaurent</option>
+                </select>
+                <br>
+                <br>
+                <div class="form-outline mb-4">
+                    <input type="email" id="form1Example1" class="form-control" required/>
+                    <label class="form-label" for="form1Example1">Name</label>
+                </div>
+                <div class="form-outline mb-4">
+                    <input type="email" id="form1Example1" class="form-control" required />
+                    <label class="form-label" for="form1Example1">Phone Number</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-mdb-dismiss="modal" onclick={{action 'showAlert'}} >Save changes</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{#if Alert}}
+<div class="alert alert-success" id="alert" role="alert" >
+  Your Order Placed Successfully
+</div>
+{{/if}}
+
+
+{{!-- // --}}
 
 <div style="position: absolute;margin-left:85%;margin-top:1%;">
     <a href="" class="btn btn-primary float-end mr-25" {{action "saveRecipe" }}>Save Recipe</a>

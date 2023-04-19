@@ -2,72 +2,68 @@ import Controller from '@ember/controller';
 import Ember from 'ember';
 import ENV from 'college-project/config/environment';
 export default Controller.extend({
-    resultset:null,
-    selectedValues:[],
+    resultset: null,
+    selectedValues: [],
     init() {
         this._super(...arguments);
         this.emailaddress;
         this.carddetails;
         this.shownothing;
-        this.checkbox=false
+        this.checkbox = false;
     },
     actions: {
-        getSavedRecipe(email)
-        {
+        getSavedRecipe(email) {
             console.log(email);
-           
-            if(email)
-            {
+
+            if (email) {
                 Ember.$.ajax({
-                    url:'http://localhost:8543/backend/getSavedRecipe',
-                    type:'POST',
-                    dataType:'json',
-                    data:{
-                        email:email
+                    url: 'http://localhost:8543/backend/getSavedRecipe',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        email: email
                     }
-                }).then((Response)=>
-                {
+                }).then((Response) => {
                     //this.resultset=Response;
-                    this.send('myfunc',Response);
+                    this.send('myfunc', Response);
                 });
-               
+
             }
-            
+
         },
-        myfunc(Response)
-        {
-            this.set('resultset',Response);
-            if(Response.ResultSet.length==0)
-            {
-                this.set('shownothing',true);
+        myfunc(Response) {
+            this.set('resultset', Response);
+            if (Response.ResultSet.length == 0) {
+                this.set('shownothing', true);
             }
             // console.log(this.get('resultset'));
             // const res=Response;
             // this.send('getcards');
-            
+
         },
-        viewcards(cardId)
-        {
-            this.transitionToRoute('recipedetails',{queryParams:{recipeId:cardId}})
+        viewcards(cardId) {
+            this.transitionToRoute('recipedetails', { queryParams: { recipeId: cardId } })
         },
-        HomePage()
-        {
+        HomePage() {
             this.transitionToRoute('dashboard');
         },
-        showcheckbox()
-        {
-            this.set('checkbox',true);
+        showcheckbox() {
+            this.set('checkbox', true);
+            console.log(this.checkbox);
+
         },
-          getPlaylistIds()
-          {
-            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            const selectedValues = [];
-            checkboxes.forEach((checkbox) => {
-             if (checkbox.checked) {
-                selectedValues.push(checkbox);
-            }});
-            console.log(this.selectedValues);
-          }
-        
+        getPlaylistIds() {
+            var selectedColors = []; // Create an empty array to store selected values
+            var checkboxes = document.getElementsByName("Checkbox"); // Get all checkboxes with the name "color"
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].checked) { // If checkbox is checked
+                    let spliter=checkboxes[i].value;
+                    let arr=spliter.split("#");
+                    selectedColors.push(arr[1]); // Add the value to the array
+                }
+            }
+            console.log(selectedColors);
+        }
+
     }
 });

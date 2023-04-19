@@ -13,6 +13,7 @@ export default Controller.extend({
         this.emailaddress;
         this.recipeid;
         this.html;
+        this.Alert=false;
     },
     callrecipe(recipeId) {
 
@@ -96,6 +97,13 @@ export default Controller.extend({
         HomePage()
         {
             this.transitionToRoute('dashboard');
+        },
+        showAlert() {
+            this.set('Alert',true);
+            let a=this;
+            setTimeout(function() {
+                a.set('Alert',false);
+              }, 5000);
         }
     }
 

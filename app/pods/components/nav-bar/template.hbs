@@ -18,7 +18,7 @@
                 <img src="assets\images\chef-logo-design-template-vector-30211700-removebg-preview.png"
                     style="width: 8%;" {{action 'CallHomePage' }} />
                 <li class="nav-item">
-                    <a class="nav-link" {{action 'CallHomePage' }} >Home</a>
+                    <a class="nav-link" {{action 'CallHomePage' }} style="cursor:pointer">Home</a>
                 </li>
                 {{!-- <li class="nav-item">
                     <a class="nav-link" >Play List</a>
@@ -34,7 +34,7 @@
 
                 <input type="search" class="form-control rounded" id="searchtext" placeholder="Search"
                     value={{searchTerm}} aria-label="Search" aria-describedby="search-addon" data-mdb-toggle="dropdown"
-                    oninput={{action "print" }} />
+                    oninput={{action "print" }} autocomplete="off"/>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     {{#each suggesionlist.meals as |item| }}
@@ -57,7 +57,7 @@
                 </button>
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                    <form class="row row-cols-lg-auto g-3 align-items-center" style="padding:2%">
+                    <form class="row row-cols-lg-auto g-3 align-items-center" style="padding:2%" autocomplete="off">
                         
                         <div class="form-outline mb-2">
                             <input type="text" id="Cooking" class="form-control" />
@@ -71,6 +71,7 @@
 
                             <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
                             <select class="select" id="diet">
+                                <option></option>
                                 <option value="balanced">balanced</option>
                                 <option value="high-fiber">high fiber</option>
                                 <option value="high-protein">high protien</option>
@@ -88,6 +89,7 @@
 
                             <label class="visually-hidden" for="inlineFormSelectPref">Preference</label>
                             <select class="select" id="dishtype">
+                                <option></option>
                                 <option value="Main course"> Main course </option>
                                 <option value="Biscuits and cookies">Biscuits and cookies</option>
                                 <option value="Bread">Bread</option>
@@ -150,7 +152,7 @@
                             <input type="text" id="Protein" class="form-control" />
                             <label class="form-label" for="Protein">Protein in g</label>
                         </div>
-                        <button {{action 'filter' }}>Apply filter</button>
+                        <button class="btn btn-primary" {{action 'filter' }}>Apply filter</button>
                     </form>
                 </div>
             </div>
