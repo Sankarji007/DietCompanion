@@ -60,7 +60,7 @@ export default Controller.extend({
             var card = this.get('resultset');
             const myJSON = JSON.stringify(card);
             Ember.$.ajax({
-                url: 'http://localhost:8543/backend/SaveRecipe',
+                url: 'http://localhost:8543/Recipemanagement/SaveRecipe',
                 type: 'POST',
                 dataType: 'json',
                 data: {

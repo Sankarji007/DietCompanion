@@ -31,7 +31,7 @@ export default Component.extend({
             const myArray = uri.split("#");
             const query=myArray[1];
             Ember.$.ajax({
-                url:'http://localhost:8543/backend/deleteSavedRecipe',
+                url:'http://localhost:8543/Recipemanagement/deleteSavedRecipe',
                 type:'POST',
                 dataType:'json',
                 data:{

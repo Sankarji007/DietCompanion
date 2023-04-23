@@ -12,7 +12,7 @@ export default Controller.extend({
             if(pass===confirmpass)
             {
                 Ember.$.ajax({
-                    url:'http://localhost:8543/backend/signup',
+                    url:'http://localhost:8543/Recipemanagement/signup',
                     type:'POST',
                     dataType:'json',
                     data:{

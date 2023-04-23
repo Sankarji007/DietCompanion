@@ -10,14 +10,16 @@ export default Controller.extend({
         this.carddetails;
         this.shownothing;
         this.checkbox = false;
+
     },
+
     actions: {
         getSavedRecipe(email) {
             console.log(email);
 
-            if (email) {
+            if (email != null) {
                 Ember.$.ajax({
-                    url: 'http://localhost:8543/backend/getSavedRecipe',
+                    url: 'http://localhost:8543/Recipemanagement/getSavedRecipe',
                     type: 'POST',
                     dataType: 'json',
                     data: {
@@ -57,12 +59,31 @@ export default Controller.extend({
             var checkboxes = document.getElementsByName("Checkbox"); // Get all checkboxes with the name "color"
             for (var i = 0; i < checkboxes.length; i++) {
                 if (checkboxes[i].checked) { // If checkbox is checked
-                    let spliter=checkboxes[i].value;
-                    let arr=spliter.split("#");
+                    let spliter = checkboxes[i].value;
+                    let arr = spliter.split("#");
                     selectedColors.push(arr[1]); // Add the value to the array
                 }
             }
             console.log(selectedColors);
+            const result = selectedColors.join(",");
+            let email = this.emailaddress;
+            
+            const userInput = window.prompt('Please enter your Playlist Name:', '');
+            
+            Ember.$.ajax({
+                url: 'http://localhost:8082/api/SavePlayList',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    email: email,
+                    recipeId: result,
+                    playlistname: userInput
+                }
+            }).then((Response) => {
+                console.log(Response);
+            });
+            this.set('checkbox', false);
+
         }
 
     }

@@ -15,7 +15,7 @@ export default Controller.extend({
 
 
             Ember.$.ajax({
-                url: 'http://localhost:8543/backend/SignIn',
+                url: 'http://localhost:8543/Recipemanagement/SignIn',
                 type: 'POST',
                 dataType: 'json',
                 data: {

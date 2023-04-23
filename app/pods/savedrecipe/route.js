@@ -14,13 +14,14 @@ export default Route.extend({
         
     },
     setupController(controller, model) {
-       
+       console.log("Setup controller");
         controller.set('emailaddress', this.email);
         controller.send('getSavedRecipe',this.email);
       },
     resetController(controller,model)
     {
         controller.set('checkbox',null);
+        controller.set('emailaddress',null);
         controller.set('resultset',null);
 
     }
