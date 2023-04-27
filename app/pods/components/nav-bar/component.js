@@ -1,7 +1,9 @@
 import Component from '@ember/component';
 import Ember from 'ember'
 import ENV from 'college-project/config/environment';
+
 export default Component.extend({
+    
     init() {
         this._super(...arguments);
         this.callmethod=this.callit||null;
@@ -10,6 +12,7 @@ export default Component.extend({
         this.searchTerm="noodles"
         this.suggesionlist;
         this.homepage=this.homepage||null;
+   
     },
     actions:
     {
@@ -102,6 +105,11 @@ export default Component.extend({
             this.homepage();
             }
             
+        },
+        CallPlaylist()
+        {
+            this.sendAction('playlist');
+           
         }
     }
 });

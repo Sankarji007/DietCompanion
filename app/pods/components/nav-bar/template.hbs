@@ -20,8 +20,11 @@
                 <li class="nav-item">
                     <a class="nav-link" {{action 'CallHomePage' }} style="cursor:pointer">Home</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" {{action 'CallPlaylist' }} style="cursor:pointer">Playlist</a>
+                </li>
                 {{!-- <li class="nav-item">
-                    <a class="nav-link" >Play List</a>
+                    <a class="nav-link">Play List</a>
                 </li> --}}
 
             </ul>
@@ -29,12 +32,12 @@
         </div>
         <!-- Collapsible wrapper -->
         {{#if callmethod}}
-        <div style="width: 30%;margin-right:30%">
+        <div class="d-flex ms-auto" style="width: 30%;margin-right:30%">
             <div class="input-group rounded">
 
-                <input type="search" class="form-control rounded" id="searchtext" placeholder="Search"
+                <input type="search" class="form-control mr-sm-8" id="searchtext" placeholder="Search"
                     value={{searchTerm}} aria-label="Search" aria-describedby="search-addon" data-mdb-toggle="dropdown"
-                    oninput={{action "print" }} autocomplete="off"/>
+                    oninput={{action "print" }} autocomplete="off" />
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     {{#each suggesionlist.meals as |item| }}
@@ -58,7 +61,7 @@
 
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
                     <form class="row row-cols-lg-auto g-3 align-items-center" style="padding:2%" autocomplete="off">
-                        
+
                         <div class="form-outline mb-2">
                             <input type="text" id="Cooking" class="form-control" />
                             <label class="form-label" for="Cooking">Cooking Time in minutes</label>
@@ -97,7 +100,7 @@
                                 <option value="Condiments and sauces"> Condiments and sauces </option>
                                 <option value="Desserts">Desserts </option>
                                 <option value="Drinks"> Drinks </option>
-                                
+
                                 <option value="Pancake"> Pancake </option>
                                 <option value="Preserve"> Preserve </option>
                                 <option value="Salad"> Salad </option>
@@ -171,5 +174,6 @@
     <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
+
 
 {{yield}}

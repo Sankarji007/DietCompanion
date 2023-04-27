@@ -12,7 +12,7 @@ Router.map(function() {
   this.route('dashboard',{path:'/dashboard'});
   this.route('recipedetails',{path:'/recipedetails'});
   this.route('savedrecipe',{path:'/savedrecipe'});
-  this.route('playlist');
+  this.route('playlist',{path:'/playlist'});
 });
 
 export default Router;

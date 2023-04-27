@@ -98,6 +98,11 @@ export default Controller.extend({
 
             });
             
+        },
+        callplaylist()
+        {
+            console.log("play list called");
+            this.transitionToRoute('playlist');
         }
 
 

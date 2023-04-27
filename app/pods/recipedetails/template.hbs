@@ -1,26 +1,39 @@
 {{nav-bar email=emailaddress callsave=(action 'savedcolletion') homepage=(action 'HomePage')}}
 {{#if load}}
-<div class="spinner-border" style="position:fixed;
-    top: 50%;
-    left: 50%;
-    margin-top: -50px;
-    margin-left: -50px;
-    width: 100px;
-    height: 100px;"></div>
+<div class="loader">
+  <div class="dot dot1"></div>
+  <div class="dot dot2"></div>
+  <div class="dot dot3"></div>
+</div>
 
 {{else}}
-{{#twitter-share-button title="Look at this! i have found a useful information on this page "
-hashtags=resultset.recipe.label }}Tweet{{/twitter-share-button}}
-{{#email-share-button recipient="sankarravi045@gamil.com" title="Prepare meal by these Ingredients" text=html}}Send to
-email To prepare meal{{/email-share-button}}
-{{#fb-share-button title="Look at this!" hashtags=resultset.recipe.label }}Share{{/fb-share-button}}
-<button type="button" class="btn btn-primary" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
-    Order in restaurent
-</button>
+<div class="button-group">
+  {{#twitter-share-button title="Look at this! i have found a useful information on this page " hashtags=resultset.recipe.label }}
+    Tweet
+  {{/twitter-share-button}}
+
+  {{#email-share-button recipient="sankarravi045@gamil.com" title="Prepare meal by these Ingredients" text=html}}
+    Send to email To prepare meal
+  {{/email-share-button}}
+
+  {{#fb-share-button title="Look at this!" hashtags=resultset.recipe.label }}
+    Share
+  {{/fb-share-button}}
+
+  <div class="d-flex justify-content-end">
+  <button type="button" class="btn btn-primary me-3" data-mdb-toggle="modal" data-mdb-target="#exampleModal">
+    Order in restaurant
+  </button>
+  <button class="btn btn-primary me-6" {{action "saveRecipe" }}>Save Recipe</button>
+</div>
+
+</div>
+
+
 
 {{!-- // --}}
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Select Restaurent</h5>
@@ -61,14 +74,12 @@ email To prepare meal{{/email-share-button}}
 
 {{!-- // --}}
 
-<div style="position: absolute;margin-left:85%;margin-top:1%;">
-    <a href="" class="btn btn-primary float-end mr-25" {{action "saveRecipe" }}>Save Recipe</a>
-</div>
 
 
-<div style="padding: 5%;" class="hello">
+
+<div class="container-fluid">
     <div class="row">
-        <div class="col hover-shadow" style="width: 3%;cursor:pointer">
+        <div class="col-12 col-md-6 col-lg-4" >
             <img src={{resultset.recipe.image}} class="img-fluid rounded" style="padding: 2%;width:100%" />
 
             <blockquote class="blockquote">
@@ -82,7 +93,7 @@ email To prepare meal{{/email-share-button}}
 
 
         </div>
-        <div class="col hover-shadow">
+        <div class="col-12 col-md-6 col-lg-4">
             <p class="h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Ingredient list</p>
             <ul class="list-group list-group-light">
                 {{#each resultset.recipe.ingredientLines as |list|}}
@@ -91,7 +102,7 @@ email To prepare meal{{/email-share-button}}
             </ul>
 
         </div>
-        <div class="col hover-shadow">
+        <div class="col-12 col-md-6 col-lg-4">
 
             <div id="carouselExampleInterval" class="carousel slide" data-mdb-ride="carousel" data-mdb-interval="false">
                 <div class="carousel-inner">
@@ -141,39 +152,162 @@ email To prepare meal{{/email-share-button}}
     </div>
 </div>
 
-<center>
-    <p class="h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Nutrition Information</p>
-    <div style="width:50%" class="center">
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <p class="h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 text-center">Nutrition Information</p>
+      <div class="table-responsive">
         <table class="table table-hover" border="1">
-            <thead>
-                <tr>
-                    <th>
-                        <p class="h4">Nutrition</p>
-                    </th>
-                    <th>
-                        <p class="h4">Amount</p>
-                    </th>
-                    <th>
-                        <p class="h4">Unit</p>
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each nutrician as |item|}}
-
-                <tr>
-                    <td>{{item.label}}</td>
-                    <td>{{item.quantity}}</td>
-                    <td>{{item.unit}}</td>
-                </tr>
-                {{/each}}
-            </tbody>
-
+          <thead>
+            <tr>
+              <th>
+                <p class="h4">Nutrition</p>
+              </th>
+              <th>
+                <p class="h4">Amount</p>
+              </th>
+              <th>
+                <p class="h4">Unit</p>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each nutrician as |item|}}
+              <tr>
+                <td>{{item.label}}</td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.unit}}</td>
+              </tr>
+            {{/each}}
+          </tbody>
         </table>
+      </div>
     </div>
-</center>
+  </div>
+</div>
+
 
 
 {{/if}}
+<style>
+    /* Define the styles for small screens */
+    @media (max-width: 576px) {
+        /* Adjust the position of the Save Recipe button */
+        div.save-btn {
+            position: static;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        /* Adjust the size of the recipe image */
+        div.recipe-image img {
+            width: 100%;
+        }
+        
+        /* Adjust the size of the ingredient list */
+        div.ingredient-list {
+            padding: 2%;
+        }
+        
+        /* Adjust the font size of the ingredient list items */
+        ul.list-group li {
+            font-size: 14px;
+        }
+        
+        /* Adjust the size of the nutrition table */
+        table {
+            width: 100%;
+        }
+    }
+    
+    /* Define the styles for medium screens */
+    @media (min-width: 576px) and (max-width: 992px) {
+        /* Adjust the position of the Save Recipe button */
+        div.save-btn {
+            position: absolute;
+            margin-left: 85%;
+            margin-top: 1%;
+        }
+        
+        /* Adjust the size of the recipe image */
+        div.recipe-image img {
+            width: 100%;
+        }
+        
+        /* Adjust the size of the ingredient list */
+        div.ingredient-list {
+            padding: 5%;
+        }
+        
+        /* Adjust the font size of the ingredient list items */
+        ul.list-group li {
+            font-size: 16px;
+        }
+    }
+    .loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
+.dot {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: #000;
+  animation: loaderAnimation 1s ease-in-out infinite;
+}
+
+.dot1 {
+  animation-delay: 0s;
+}
+
+.dot2 {
+  animation-delay: 0.1s;
+}
+
+.dot3 {
+  animation-delay: 0.2s;
+}
+
+@keyframes loaderAnimation {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+    
+    /* Define the styles for large screens */
+    @media (min-width: 992px) {
+        /* Adjust the position of the Save Recipe button */
+        div.save-btn {
+            position: absolute;
+            margin-left: 85%;
+            margin-top: 1%;
+        }
+        
+        /* Adjust the size of the recipe image */
+        div.recipe-image img {
+            width: 100%;
+        }
+        
+        /* Adjust the size of the ingredient list */
+        div.ingredient-list {
+            padding: 5%;
+        }
+        
+        /* Adjust the font size of the ingredient list items */
+        ul.list-group li {
+            font-size: 18px;
+        }
+    }
+</style>
 {{outlet}}

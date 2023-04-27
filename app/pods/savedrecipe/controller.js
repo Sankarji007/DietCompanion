@@ -71,7 +71,7 @@ export default Controller.extend({
             const userInput = window.prompt('Please enter your Playlist Name:', '');
             
             Ember.$.ajax({
-                url: 'http://localhost:8082/api/SavePlayList',
+                url: 'http://localhost:8543/Recipemanagement/SavePlayList',
                 type: 'POST',
                 dataType: 'json',
                 data: {
