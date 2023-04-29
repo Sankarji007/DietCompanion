@@ -1,1 +1,20 @@
+{{nav-bar email=emailaddress callsave=(action 'savedcolletion') homepage=(action 'HomePage')}}
+
+
+
+
+{{#each result.result as |item|}}
+<div id="main" style="padding: 5%;">
+
+    <p class=" h1 fw-bold "> {{item.playlist_name}} created by {{item.username}}</p>
+
+    <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6" id="main2">
+        {{#each item.recipes as |recipe|}}
+        {{my-cards result=recipe viewcards=(action 'viewcards') uselocal=true}}
+        {{/each}}
+
+    </div>
+</div>
+{{/each}}
+
 {{outlet}}

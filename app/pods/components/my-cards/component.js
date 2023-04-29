@@ -10,8 +10,21 @@ export default Component.extend({
         this.isdelete=this.isdelete||false;
         this.email=this.email||null;
         this.reload=this.reload||null;
+        this.uselocal=this.uselocal||null;
+        this.imageLink=null;
+        this.send('getImageId');
     },
     actions: {
+        getImageId()
+        {
+            const uri=this.result.recipe.uri;
+            const myArray = uri.split("#");
+            const query=myArray[1];
+            this.set('imageLink',`http://localhost:8543/Recipemanagement/GetImage/${query}`);
+            console.log(this.imageLink);
+            console.log(this.uselocal);
+            
+        },
         redirectToDetails(url)
         {
             const myArray = url.split("#");
@@ -22,6 +35,8 @@ export default Component.extend({
         {
             
             this.calories=amt.toFixed(2);
+            this.send('getImageId');
+
         },
         submit(uri)
         {

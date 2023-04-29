@@ -1,5 +1,5 @@
 <div>
-    {{nav-bar email=emailaddress homepage=(action 'HomePage')}}
+    {{nav-bar email=emailaddress homepage=(action 'HomePage') playlist=(action 'callplaylist')}}
 </div>
 
 <div id="main" style="padding: 5%;">
@@ -22,7 +22,7 @@
         {{#each resultset.ResultSet as |result|}}
         
         {{#my-cards result=result viewcards=(action 'viewcards') isdelete=true email=emailaddress reload=(action
-        'getSavedRecipe') showcheck=checkbox}}
+        'getSavedRecipe') showcheck=checkbox uselocal=true}}
 
             {{#if checkbox}}
             <input type="checkbox" name="Checkbox" value={{result.recipe.uri}} style="width:2vw;height:2vh"/>

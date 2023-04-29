@@ -5,7 +5,11 @@
             {{yield}}
             <div {{action 'redirectToDetails' result.recipe.uri}}>
                 <div class="hover-zoom">
+                    {{#if uselocal}}
+                        <img class="card-img-top" src={{imageLink}}>
+                    {{else}}
                     <img class="card-img-top" src={{result.recipe.image}}>
+                    {{/if}}
                 </div>
 
 

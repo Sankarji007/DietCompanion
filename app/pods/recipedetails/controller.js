@@ -104,6 +104,11 @@ export default Controller.extend({
             setTimeout(function() {
                 a.set('Alert',false);
               }, 5000);
+        },
+        callplaylist()
+        {
+            console.log("play list called");
+            this.transitionToRoute('playlist');
         }
     }
 

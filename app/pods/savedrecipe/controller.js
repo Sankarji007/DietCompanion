@@ -84,6 +84,11 @@ export default Controller.extend({
             });
             this.set('checkbox', false);
 
+        },
+        callplaylist()
+        {
+            console.log("play list called");
+            this.transitionToRoute('playlist');
         }
 
     }
