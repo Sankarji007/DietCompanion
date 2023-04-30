@@ -21,8 +21,8 @@ export default Component.extend({
             const myArray = uri.split("#");
             const query=myArray[1];
             this.set('imageLink',`http://localhost:8543/Recipemanagement/GetImage/${query}`);
-            console.log(this.imageLink);
-            console.log(this.uselocal);
+            (this.imageLink);
+            (this.uselocal);
             
         },
         redirectToDetails(url)
@@ -41,8 +41,8 @@ export default Component.extend({
         submit(uri)
         {
             let email=this.email;
-            console.log(email);
-            console.log(uri);
+            (email);
+            (uri);
             const myArray = uri.split("#");
             const query=myArray[1];
             Ember.$.ajax({
@@ -54,7 +54,7 @@ export default Component.extend({
                     recipe_id:query
                 }
             }).then((response)=>{
-                console.log(response);
+                (response);
                 this.reload(email);
             })
         }

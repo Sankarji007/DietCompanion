@@ -1,5 +1,4 @@
 import Controller from '@ember/controller';
-
 import Ember from 'ember';
 export default Controller.extend({
     init()
@@ -37,7 +36,7 @@ export default Controller.extend({
         {
             this.set('result',response);
             let local=this.result;
-            console.log(local);
+            (local);
         },
         viewcards(cardId)
         {

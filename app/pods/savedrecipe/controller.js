@@ -1,6 +1,6 @@
 import Controller from '@ember/controller';
 import Ember from 'ember';
-import ENV from 'college-project/config/environment';
+
 export default Controller.extend({
     resultset: null,
     selectedValues: [],
@@ -15,7 +15,7 @@ export default Controller.extend({
 
     actions: {
         getSavedRecipe(email) {
-            console.log(email);
+            (email);
 
             if (email != null) {
                 Ember.$.ajax({
@@ -38,7 +38,7 @@ export default Controller.extend({
             if (Response.ResultSet.length == 0) {
                 this.set('shownothing', true);
             }
-            // console.log(this.get('resultset'));
+            // (this.get('resultset'));
             // const res=Response;
             // this.send('getcards');
 
@@ -51,7 +51,7 @@ export default Controller.extend({
         },
         showcheckbox() {
             this.set('checkbox', true);
-            console.log(this.checkbox);
+            (this.checkbox);
 
         },
         getPlaylistIds() {
@@ -64,7 +64,7 @@ export default Controller.extend({
                     selectedColors.push(arr[1]); // Add the value to the array
                 }
             }
-            console.log(selectedColors);
+            (selectedColors);
             const result = selectedColors.join(",");
             let email = this.emailaddress;
             
@@ -80,14 +80,14 @@ export default Controller.extend({
                     playlistname: userInput
                 }
             }).then((Response) => {
-                console.log(Response);
+                (Response);
             });
             this.set('checkbox', false);
 
         },
         callplaylist()
         {
-            console.log("play list called");
+            ("play list called");
             this.transitionToRoute('playlist');
         }
 

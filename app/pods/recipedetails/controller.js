@@ -1,7 +1,6 @@
 import Controller from '@ember/controller';
 import Ember from 'ember';
-import ENV from 'college-project/config/environment';
-// import SocialShare from 'social-share.js'; 
+import ENV from 'college-project/config/environment'; 
 export default Controller.extend({
     queryParams: ['recipeId'],
     resultset: null,
@@ -31,7 +30,7 @@ export default Controller.extend({
             }
 
         }).then((response) => {
-            console.log(response);
+            (response);
             this.send('store', response);
 
         });
@@ -107,7 +106,7 @@ export default Controller.extend({
         },
         callplaylist()
         {
-            console.log("play list called");
+            ("play list called");
             this.transitionToRoute('playlist');
         }
     }

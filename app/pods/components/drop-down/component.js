@@ -10,7 +10,7 @@ export default Component.extend({
     actions: {
         callme()
         {
-            console.log("hello");
+            ("hello");
             this.callsave();
         },
         logout()

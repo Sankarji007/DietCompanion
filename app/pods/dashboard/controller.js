@@ -18,6 +18,8 @@ export default Controller.extend({
         // obj.app_key=ENV.APP_KEY;
         // obj["nutrients[CA]"]=30;
         this.load=true;
+        this.pageNo=1;
+        this.previouslinks = [];
         Ember.$.ajax({
                 url:'https://api.edamam.com/api/recipes/v2',
                 type:'GET',
@@ -48,7 +50,7 @@ export default Controller.extend({
             this.recipes=myrecp;
             this.set('resultset',this.recipes);
             
-            // console.log(this.anrf);
+            // (this.anrf);
         },
         callfromsearch(recipes)
         {
@@ -79,7 +81,7 @@ export default Controller.extend({
         },
         redirctToSavedRecipe()
         {
-            console.log("hello");
+            ("hello");
             this.transitionToRoute('savedrecipe');
         },
         applyfilter(obj)
@@ -101,8 +103,47 @@ export default Controller.extend({
         },
         callplaylist()
         {
-            console.log("play list called");
+            ("play list called");
             this.transitionToRoute('playlist');
+        },
+        nextpage()
+        {
+            const link=this.resultset._links.next.href;
+            
+            this.previouslinks.push(this.resultset);
+            
+            this.set('load',true);
+            
+            Ember.$.ajax({
+                url:link,
+                type:'GET',
+                dataType:'json',
+                
+               
+            }).then((response)=>{
+                
+               this.send('store',response);
+               this.set('load',false);
+
+            });
+        },
+        prevpage()
+        {
+            if(this.previouslinks.length>0)
+            {
+              
+                this.set('load',true);
+                const val=this.previouslinks.pop();
+                const self=this;
+                setTimeout(function() {
+                
+                    self.set('resultset',val);
+                    self.set('load',false);
+                
+                },3000)
+                
+                
+            }
         }
 
 

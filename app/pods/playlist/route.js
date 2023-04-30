@@ -1,7 +1,6 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-import Ember from 'ember';
-import ENV from 'college-project/config/environment';
+
 export default Route.extend({
     cookies: service(),
     email:null,
@@ -18,7 +17,7 @@ export default Route.extend({
     },
     setupController(controller, model) {
         controller.set('emailaddress', this.email);
-        console.log("setupcontroller");
+        ("setupcontroller");
         
         
         controller.send("GetDetailedResponse");

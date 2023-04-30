@@ -6,7 +6,7 @@ export default Route.extend({
     beforeModel(transition, controller) {
         let cookieService = this.get('cookies');
         let cookies = cookieService.read();
-        console.log(cookies);
+        (cookies);
         this.set('email',cookies.login);
         if(this.email!=null)
         {

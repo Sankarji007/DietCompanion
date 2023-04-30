@@ -1,5 +1,4 @@
 import Controller from '@ember/controller';
-// import Cookies from 'js-cookie';
 import Ember from 'ember';
 import { inject as service } from '@ember/service';
 export default Controller.extend({
@@ -32,7 +31,7 @@ export default Controller.extend({
                     cookieService.write('login', this.email);
 
                     let cookies = cookieService.read();
-                    console.log(cookies);
+                    (cookies);
                     this.transitionToRoute('dashboard');
                     // this.set('session.login', this.email);
                 }

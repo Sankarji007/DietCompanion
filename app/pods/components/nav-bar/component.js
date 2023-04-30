@@ -40,7 +40,7 @@ export default Component.extend({
         store(value)
         {
             this.set('suggesionlist',value);
-            console.log(this.suggesionlist);
+            (this.suggesionlist);
         },
         filter()
         {   let searchtext=document.getElementById('searchtext').value;
@@ -101,7 +101,7 @@ export default Component.extend({
         {
             if(this.homepage!=null)
             {
-                console.log("hello")
+                ("hello")
             this.homepage();
             }
             

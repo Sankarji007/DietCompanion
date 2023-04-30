@@ -14,7 +14,7 @@ export default Route.extend({
         
     },
     setupController(controller, model) {
-       console.log("Setup controller");
+       ("Setup controller");
         controller.set('emailaddress', this.email);
         controller.send('getSavedRecipe',this.email);
       },
