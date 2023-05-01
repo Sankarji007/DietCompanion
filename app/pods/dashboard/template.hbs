@@ -1,87 +1,54 @@
 <main>
-  {{nav-bar callit=(action 'callfromsearch') callsave=(action 'redirctToSavedRecipe') playlist=(action 'callplaylist')
-  email=emailaddress applyfilter=(action 'applyfilter')}}
-
-
-
+  {{nav-bar
+    callit=(action "callfromsearch")
+    callsave=(action "redirctToSavedRecipe")
+    playlist=(action "callplaylist")
+    email=emailaddress
+    applyfilter=(action "applyfilter")
+  }}
 
   <div id="main" style="padding: 5%;">
-    <p class=" h1 fw-bold "> Search Results for {{queried}}</p>
+    <p class="h1 fw-bold"> Search Results for {{queried}}</p>
     <div class="row row-cols-2 row-cols-md-4 row-cols-lg-6" id="main2">
 
       {{#each resultset.hits as |result|}}
-      {{my-cards result=result viewcards=(action 'viewcards')}}
+        {{my-cards result=result viewcards=(action "viewcards")}}
       {{/each}}
     </div>
-    <div class="text-center">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item"><a class="page-link" href="#" onclick={{action 'prevpage'}}>Previous</a></li>
-          <li class="page-item"><a class="page-link" href="#" onclick={{action 'nextpage'}}>Next</a></li>
-        </ul>
-      </nav>
-    </div>
-
+    {{#if load}}
+      {{screen-loader}}
+    {{else}}
+      <div class="text-center">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"><a
+                class="page-link"
+                onclick={{action "prevpage"}}
+              >Previous</a></li>
+            <li class="page-item"><a
+                class="page-link"
+                onclick={{action "nextpage"}}
+              >Next</a></li>
+          </ul>
+        </nav>
+      </div>
+    {{/if}}
 
   </div>
 
-
-  {{#if load}}
-  <div class="loader">
-    <div class="dot dot1"></div>
-    <div class="dot dot2"></div>
-    <div class="dot dot3"></div>
-  </div>
-  {{/if}}
 </main>
 
 <style>
-  .loader {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  .text-center
-  {
-    position: relative;
-    margin-left: 45%;
-    margin-top: 5%;
-  }
-  .dot {
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin: 0 5px;
-    border-radius: 50%;
-    background-color: #000;
-    animation: loaderAnimation 1s ease-in-out infinite;
-  }
-
-  .dot1 {
-    animation-delay: 0s;
-  }
-
-  .dot2 {
-    animation-delay: 0.1s;
-  }
-
-  .dot3 {
-    animation-delay: 0.2s;
-  }
-
-  @keyframes loaderAnimation {
-    0% {
-      transform: scale(0);
-    }
-
-    50% {
-      transform: scale(1);
-    }
-
-    100% {
-      transform: scale(0);
-    }
+  .loader { position: fixed; top: 50%; left: 50%; transform: translate(-50%,
+  -50%); } .text-center { position: relative; margin-left: 45%; margin-top: 5%;
+  } .dot { display: inline-block; width: 20px; height: 20px; margin: 0 5px;
+  border-radius: 50%; background-color: #000; animation: loaderAnimation 1s
+  ease-in-out infinite; } .dot1 { animation-delay: 0s; } .dot2 {
+  animation-delay: 0.1s; } .dot3 { animation-delay: 0.2s; } @keyframes
+  loaderAnimation { 0% { transform: scale(0); } 50% { transform: scale(1); }
+  100% { transform: scale(0); } }
+  .page-item{
+    cursor: pointer;
   }
 </style>
 
